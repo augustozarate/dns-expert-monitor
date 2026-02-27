@@ -1,0 +1,95 @@
+# Firmas de detección de ataques DNS
+# DNS Expert Monitor v0.1.0
+
+dns_tunneling:
+  enabled: true
+  thresholds:
+    entropy_threshold: 4.5
+    subdomain_length: 50
+    queries_per_second: 100
+    uncommon_record_types: ["TXT", "NULL", "KEY", "OPT"]
+  
+  signatures:
+    - name: "high_entropy_domain"
+      description: "Dominio con alta entropía (posible data exfiltration)"
+      condition: "entropy > entropy_threshold"
+      severity: "high"
+    
+    - name: "long_subdomain_chain"
+      description: "Cadena de subdominios muy larga"
+      condition: "subdomain_count > 5 AND total_length > subdomain_length"
+      severity: "medium"
+    
+    - name: "fast_dns_queries"
+      description: "Tasa de consultas DNS anormalmente alta"
+      condition: "qps > queries_per_second"
+      severity: "medium"
+
+dns_amplification:
+  enabled: true
+  thresholds:
+    response_size_ratio: 10  # Respuesta 10x más grande que consulta
+    any_queries_per_minute: 50
+    
+  signatures:
+    - name: "possible_amplification_attack"
+      description: "Respuesta DNS significativamente más grande que la consulta"
+      condition: "response_size / query_size > response_size_ratio"
+      severity: "high"
+    
+    - name: "excessive_any_queries"
+      description: "Muchas consultas de tipo ANY"
+      condition: "any_queries > any_queries_per_minute"
+      severity: "medium"
+
+nxdomain_attacks:
+  enabled: true
+  thresholds:
+    nxdomain_percentage: 30  # 30% de respuestas NXDOMAIN
+    nxdomain_per_minute: 100
+    
+  signatures:
+    - name: "high_nxdomain_rate"
+      description: "Porcentaje anormalmente alto de respuestas NXDOMAIN"
+      condition: "nxdomain_percent > nxdomain_percentage"
+      severity: "medium"
+    
+    - name: "nxdomain_flood"
+      description: "Ataque de inundación NXDOMAIN"
+      condition: "nxdomain_per_minute > nxdomain_per_minute"
+      severity: "high"
+
+dns_poisoning:
+  enabled: true
+  signatures:
+    - name: "ttl_anomaly"
+      description: "TTL anormalmente bajo en respuestas (posible poisoning)"
+      condition: "ttl < 30"
+      severity: "low"
+    
+    - name: "multiple_responses"
+      description: "Múltiples respuestas diferentes para la misma consulta"
+      condition: "unique_responses > 2"
+      severity: "medium"
+
+domains_blacklist:
+  # Dominios sospechosos conocidos
+  suspicious:
+    - "*.tk"
+    - "*.ml"
+    - "*.ga"
+    - "*.cf"
+    - "*.gq"
+    - "*.xyz"
+    - "*.top"
+  
+  # Dominios de malware conocidos (ejemplos)
+  malware:
+    - "example-malware-domain.com"
+    - "evil-tracker.net"
+  
+  # Dominios de cryptominers
+  cryptominers:
+    - "*.monero.*"
+    - "*xmr.*"
+    - "*crypto*-pool.*"

@@ -1,0 +1,61 @@
+# Configuración de detectores de seguridad DNS Expert Monitor
+
+detectors:
+  dns_tunneling:
+    enabled: true
+    entropy_threshold: 4.5
+    max_subdomain_length: 50
+    max_queries_per_second: 100
+    suspicious_record_types: ["TXT", "NULL", "KEY", "OPT"]
+    max_subdomain_count: 5
+    check_base64_patterns: true
+    check_hex_patterns: true
+  
+  poisoning_detector:
+    enabled: true
+    min_ttl_for_alert: 30
+    max_different_responses: 2
+    time_window_minutes: 5
+    check_ttl_anomalies: true
+    check_multiple_responses: true
+    check_unauthorized_servers: true
+    authorized_servers:
+      - "8.8.8.8"
+      - "8.8.4.4"
+      - "1.1.1.1"
+      - "9.9.9.9"
+  
+  amplification_detector:
+    enabled: true
+    min_amplification_ratio: 10
+    max_queries_per_second: 100
+    check_any_queries: true
+    any_query_threshold: 50
+    time_window_seconds: 60
+    check_source_ip_spoofing: true
+    suspicious_record_types: ["ANY", "AAAA", "MX", "TXT"]
+  
+  nxdomain_attack:
+    enabled: true
+    nxdomain_percentage_threshold: 30
+    nxdomain_per_minute_threshold: 100
+    check_random_subdomains: true
+    max_random_subdomains_per_domain: 50
+    time_window_minutes: 5
+    check_domain_generation_algorithms: true
+
+alerting:
+  alert_threshold: "medium"  # low, medium, high
+  alert_cooldown_seconds: 60
+  max_alerts_per_minute: 100
+  
+  # Colores para alertas en consola
+  colors:
+    high: "red"
+    medium: "yellow"
+    low: "blue"
+
+logging:
+  log_alerts_to_file: false
+  alert_log_path: "alerts.log"
+  log_level: "INFO"

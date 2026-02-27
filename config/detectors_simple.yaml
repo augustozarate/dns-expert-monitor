@@ -1,0 +1,17 @@
+# Configuración simple para detectores DNS Expert Monitor
+
+detectors:
+  dns_tunneling:
+    enabled: true
+  
+  poisoning_detector:
+    enabled: true
+  
+  amplification_detector:
+    enabled: true
+  
+  nxdomain_attack:
+    enabled: true
+
+alerting:
+  alert_threshold: "medium"

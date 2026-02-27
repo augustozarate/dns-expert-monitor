@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.log
+*.bak
+*.pcap
+captura*.json
+capture*.json
+*.json.bak
+*.recovered
+
+# Generated reports and captures
+*.json
+*.csv
+*.html
+*.yaml
+*.pcap
+*.gz
+*.bak
+*.recovered
+captura*.json
+capture*.json
+informe*.md
+analisis*.json
+reporte*.md
+*.log
+test_*.json
+captura_report.md

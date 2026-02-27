@@ -1,0 +1,12 @@
+# Dependencias básicas
+scapy>=2.5.0
+rich>=13.0.0
+netifaces>=0.11.0
+click>=8.1.0
+pyyaml>=6.0
+python-dateutil>=2.8.2
+
+# Para análisis avanzado (opcional)
+# pandas>=2.0.0
+# matplotlib>=3.7.0
+# numpy>=1.24.0

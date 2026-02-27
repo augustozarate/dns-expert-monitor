@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dns-expert-monitor"
+version = "0.1.0"
+description = "Advanced DNS traffic monitoring and security analysis tool"
+readme = "README.md"
+authors = [
+    {name = "Augusto"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: System Administrators",
+    "Topic :: Security",
+    "Topic :: System :: Networking :: Monitoring",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "scapy>=2.5.0",
+    "rich>=13.0.0",
+    "netifaces>=0.11.0",
+    "click>=8.1.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "flake8>=6.0.0",
+]
+analysis = [
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+]
+
+[project.scripts]
+dns-expert = "dns_expert_monitor.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/augustozarate/dns-expert-monitor"
+Repository = "https://github.com/augustozarate/dns-expert-monitor.git"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["dns_expert_monitor*"]
