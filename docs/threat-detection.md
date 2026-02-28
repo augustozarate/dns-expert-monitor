@@ -111,8 +111,8 @@ detectors:
 
 # Threshold Reference Table
 
-| Threat | Parameter | Normal | Range |	Suspicious | Critical |
-|--------|-----------|--------|-------|------------|----------|
+| Threat | Parameter | Normal Range |	Suspicious | Critical |
+|--------|-----------|--------------|------------|----------|
 | Tunneling |	Domain Entropy | < 3.5 | 3.5 - 4.5 |	> 4.5 |
 | Tunneling |	Subdomain Length | < 30 |	30 - 50 |	> 50 |
 | Poisoning |	TTL (seconds) |	> 300 |	30 - 300 |	< 30 |
