@@ -110,7 +110,7 @@ Para DNS Tunneling:
 # Tabla de referencia de umbrales
 
 | Amenaza | Parámetro | Normal Rango | Sospechoso | Crítico |
-|--------|-----------|--------|-------|------------|----------|
+|--------|------------|-------|------------|----------|
 | Tunelización | Dominio Entropía | < 3,5 | 3,5 - 4,5 | > 4,5 |
 | Tunelización | Subdominio Longitud | < 30 | 30 - 50 | > 50 |
 | Envenenamiento | TTL (segundos) | > 300 | 30 - 300 | < 30 |
