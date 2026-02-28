@@ -118,10 +118,12 @@ Para DNS Tunneling:
 | Amplificación | Tasa de respuesta | < 3x | 3x - 10x | > 10x |
 | NXDOMAIN | Tasa de error | < 5% | 5% - 30% | > 30% |
 
-# Recursos adicionales
+## 📚 Recursos adicionales
 
-- DNSSEC: https://www.cloudflare.com/dns/dnssec/
-- Limitación de la tasa de respuesta: RFC 8020
-- Detección de túneles DNS: Borrador IETF
+- **[DNSSEC](https://www.cloudflare.com/dns/dnssec/)** - Guía e implementación de DNSSEC de Cloudflare
+- **[Límite de la tasa de respuesta](https://tools.ietf.org/html/rfc8020)** - RFC 8020: Límite de la tasa de respuesta de DNS
+- **[Detección de túneles DNS](https://tools.ietf.org/html/draft-ietf-dnsop-dns-tcp-requirements-02)** - Borrador del IETF sobre los requisitos de DNS sobre TCP
 
-Esta guía forma parte de la documentación de DNS Expert Monitor. Para obtener más información, visite el repositorio principal.
+---
+
+*Esta guía forma parte de la documentación de [DNS Expert Monitor](https://github.com/augustozarate/dns-expert-monitor).*

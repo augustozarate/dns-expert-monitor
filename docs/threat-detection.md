@@ -120,10 +120,12 @@ detectors:
 | Amplification |	Response Ratio | < 3x |	3x - 10x | > 10x |
 | NXDOMAIN | Error Rate |	< 5% | 5% - 30% |	> 30% |
 
-# Additional Resources
+## 📚 Additional Resources
 
-- DNSSEC: https://www.cloudflare.com/dns/dnssec/
-- Response Rate Limiting: RFC 8020
-- DNS Tunneling Detection: IETF Draft
+- **[DNSSEC](https://www.cloudflare.com/dns/dnssec/)** - Cloudflare's DNSSEC guide and implementation
+- **[Response Rate Limiting](https://tools.ietf.org/html/rfc8020)** - RFC 8020: DNS Response Rate Limiting
+- **[DNS Tunneling Detection](https://tools.ietf.org/html/draft-ietf-dnsop-dns-tcp-requirements-02)** - IETF Draft on DNS over TCP requirements
 
-This guide is part of DNS Expert Monitor documentation. For more information, visit the main repository.
+---
+
+*This guide is part of [DNS Expert Monitor](https://github.com/augustozarate/dns-expert-monitor) documentation.*

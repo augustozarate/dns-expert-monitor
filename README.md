@@ -97,33 +97,33 @@ cd dns-expert-monitor
 pip install -e .
 ```
 
-# 🐧 Linux (Debian/Ubuntu)
-# System dependencies
+## 🐧 Linux (Debian/Ubuntu)
+## System dependencies
 ```
 sudo apt-get install libpcap-dev
 ```
 
-# Python dependencies (minimal)
+## Python dependencies (minimal)
 ```
 pip install -r requirements.txt
 ```
-# or
+### or
 ```
 pip install scapy>=2.5.0 rich>=13.0.0 click>=8.1.0 netifaces>=0.11.0 pyyaml>=6.0
 ```
 
-# For analysis and visualization (optional)
+## For analysis and visualization (optional)
 ```
 pip install pandas matplotlib numpy
 ```
 
-# 🍎 macOS
+## 🍎 macOS
 ```
 brew install libpcap
 pip install -e .
 ```
 
-# 🪟 Windows
+## 🪟 Windows
 ```
 Install Npcap in "WinPcap API-compatible Mode"
 Install Python 3.8+
@@ -142,51 +142,51 @@ sudo python run.py monitor
 # ⚡ Quick Start
 ## Verify installation
 
-# Show available interfaces
+## Show available interfaces
 ```
 dns-expert interfaces
 ```
-# or
+### or
 ```
 python run.py interfaces
 ```
 
-# Test mode (no real traffic)
+## Test mode (no real traffic)
 ```
 sudo python run.py test --duration 10
 ```
 
-# First capture
+## First capture
 
-# Quick analysis (30 seconds)
+## Quick analysis (30 seconds)
 ```
 sudo python run.py quick --duration 30
 ```
 
-# Monitoring with security detection
+## Monitoring with security detection
 ```
 sudo python run.py monitor --security
 ```
 
-# Generate report
+## Generate report
 
-# Markdown report (readable)
+## Markdown report (readable)
 ```
 python run.py report capture.json --output report.md
 ```
 
-# JSON report (processable)
+## JSON report (processable)
 ```
 dns-expert report capture.json --format json --output report.json
 ```
-# or
+### or
 ```
 python run.py report capture.json --format json --output report.json
 ```
 ---
 
 # 📚 Detailed Commands
-# 🎯 Monitoring & Capture
+## 🎯 Monitoring & Capture
 
 | Command	| Description	| Example |
 |---------|-------------|---------|
@@ -194,7 +194,7 @@ python run.py report capture.json --format json --output report.json
 | quick	| Time-based capture | `sudo python run.py quick --duration 60` |
 | test | Simulated traffic (no network) | `sudo python run.py test --duration 20` |
 
-# Available options:
+## Available options:
 
 | Option | Description | Default |
 |--------|-------------|-------------|
@@ -205,7 +205,7 @@ python run.py report capture.json --format json --output report.json
 | `-c, --config` | Configuration file |	None |
 | `-v, --verbose` | Real-time activity display | False |
 
-# Complete examples:
+## Complete examples:
 ```
 sudo python run.py monitor --security --verbose --output capture.json -i eth0
 sudo python run.py quick --duration 120 --security --output analysis.json
@@ -214,27 +214,27 @@ sudo python run.py monitor --config config/detectors.yaml
 
 ### ⚡ Quick Command Examples
 
-# Basic usage
+## Basic usage
 ```
 sudo python run.py quick --duration 30
 ```
 
-# With security detection
+## With security detection
 ```
 sudo python run.py quick --duration 120 --security
 ```
 
-# Save capture
+## Save capture
 ```
 sudo python run.py quick --duration 60 --security --output analysis.json
 ```
 
-# Verbose mode
+## Verbose mode
 ```
 sudo python run.py quick --duration 30 --security --verbose
 ```
 
-# Specify interface
+## Specify interface
 ```
 sudo python run.py quick -i eth0 --duration 30 --security
 ```
@@ -252,20 +252,20 @@ sudo python run.py quick -i eth0 --duration 30 --security
 
 `-f, --format - md (default) or json`
 
-# Markdown report
+## Markdown report
 ```
 dns-expert report capture.json --output report.md
 ```
-# or
+### or
 ```
 python run.py report capture.json --output report.md
 ```
 
-# JSON report
+## JSON report
 ```
 dns-expert report capture.json --format json
 ```
-# or
+### or
 ```
 python run.py report capture.json --format json
 ```
@@ -354,29 +354,29 @@ Generated: 2026-02-11 16:19:05
 <div align="center"> <table> <tr> <td>📊 Real-time statistics</td> <td>🏆 Top queried domains</td> </tr> <tr> <td>🛡️ Highlighted security alerts</td> <td>📋 Recent activity</td> </tr> <tr> <td colspan="2">📈 Traffic and distribution charts</td> </tr> </table> </div>
 
 # 💻 Export Examples
-# Interactive dashboard
+## Interactive dashboard
 ```
 dns-expert export capture.json --format html
 ```
-# Generates: capture.html
+## Generates: capture.html
 
-# Forensic analysis with Wireshark
+## Forensic analysis with Wireshark
 ```
 dns-expert export capture.json --format pcap
 ```
-# Generates: capture.pcap
+## Generates: capture.pcap
 
-# Statistical analysis in Excel
+## Statistical analysis in Excel
 ```
 dns-expert export capture.json --format csv
 ```
-# Generates: capture.csv
+## Generates: capture.csv
 
-# Complete export (all formats)
+## Complete export (all formats)
 ```
 dns-expert export capture.json --format all
 ```
-# Generates: capture.json, .csv, .html, .yaml, .pcap
+## Generates: capture.json, .csv, .html, .yaml, .pcap
 ---
 ### 🛡️ Security Detectors
 1. 🚨 DNS Tunneling Detector
@@ -473,23 +473,23 @@ Active detectors:
 ## 🛠️ JSON File Repair
 
 Capture files can become corrupted if writing is interrupted. DNS Expert Monitor includes advanced repair tools:
-# 1. Diagnose problems
+## 1. Diagnose problems
 ```
 dns-expert fix-json --diagnostic capture.json
 ```
-# 2. Repair automatically (recommended)
+## 2. Repair automatically (recommended)
 ```
 dns-fix --diagnostic capture.json
 ```
-# 3. Force repair with aggressive methods
+## 3. Force repair with aggressive methods
 ```
 dns-fix --force capture.json
 ```
-# 4. Repair without backup
+## 4. Repair without backup
 ```
 dns-fix --no-backup capture.json
 ```
-# 5. Save to different file
+## 5. Save to different file
 ```
 dns-fix capture.json --output repaired.json
 ```
@@ -503,15 +503,15 @@ dns-fix capture.json --output repaired.json
 ---
 
 # 🧹 Maintenance
-# Verify JSON integrity
+## Verify JSON integrity
 ```
 python3 -c "import json; json.load(open('capture.json'))" && echo "✅ Valid"
 ```
-# Clean old backups
+## Clean old backups
 ```
 rm capture.json.bak.* 2>/dev/null
 ```
-# Compress old captures
+## Compress old captures
 ```
 gzip capture_*.json
 ```
@@ -520,25 +520,25 @@ gzip capture_*.json
 # 🔄 Recommended Workflows
 
 1. 🚨 Incident Investigation
-# Focused capture (60 seconds)
+## Focused capture (60 seconds)
 ```
 sudo python run.py quick --duration 60 --output incident.json
 ```
-# Immediate analysis
+## Immediate analysis
 ```
 dns-expert report incident.json --output incident_report.md
 ```
-# or
+### or
 ```
 python run.py report incident.json --output incident_report.md
 ```
 
-# Export evidence for forensics
+## Export evidence for forensics
 ```
 dns-expert export incident.json --format pcap
 dns-expert export incident.json --format html
 ```
-# or
+### or
 ```
 python run.py export incident.json --format pcap
 python run.py export incident.json --format html
@@ -599,19 +599,19 @@ dns-expert export trend_*.json --format all
 
 5. ⚡ Combined Commands
 
-# Capture + Report (one-liner)
+## Capture + Report (one-liner)
 ```
 sudo python run.py monitor --security --output temp.json \
   && python run.py report temp.json --output report.md
 ```
 
-# Quick capture + Complete export
+## Quick capture + Complete export
 ```
 sudo python run.py quick --duration 60 --output quick.json \
   && python run.py export quick.json --format all
 ```
 
-# Complete analysis with all formats
+## Complete analysis with all formats
 ```
 sudo python run.py monitor --security --output analysis.json \
   && python run.py export analysis.json --format all \
@@ -694,16 +694,17 @@ Contributions are welcome and appreciated!
 - 🔧 Plugins - New security detectors
 
 ## 🙏 Acknowledgments
-### 📚 Libraries
-- Scapy - Packet manipulation
-- Rich - Formatted terminal output
-- Click - CLI framework
-- Netifaces - Cross-platform detection
-- PyYAML - Structured configuration
-- Pandas - Data analysis (optional)
-- Matplotlib - Visualization (optional)
 
-## 👥 Community
+### 📚 Libraries
+- **[Scapy](https://scapy.net/)** - Packet manipulation library
+- **[Rich](https://rich.readthedocs.io/)** - Beautiful terminal formatting
+- **[Click](https://click.palletsprojects.com/)** - Professional CLI framework
+- **[Netifaces](https://github.com/al45tair/netifaces)** - Cross-platform network interface detection
+- **[PyYAML](https://pyyaml.org/)** - YAML configuration parsing
+- **[Pandas](https://pandas.pydata.org/)** - Data analysis (optional)
+- **[Matplotlib](https://matplotlib.org/)** - Data visualization (optional)
+
+### 👥 Community
 - To all contributors who have helped improve this tool
 - To the security community sharing knowledge about DNS threats
 - To users reporting bugs and suggesting improvements

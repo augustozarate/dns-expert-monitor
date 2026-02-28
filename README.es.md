@@ -91,32 +91,32 @@ pip install -e .
 ```
 
 # 🐧 Linux (Debian/Ubuntu)
-# Dependencias del sistema
+## Dependencias del sistema
 ```
 sudo apt-get install libpcap-dev
 ```
 
-# Dependencias Python (mínimas)
+## Dependencias Python (mínimas)
 ```
 pip install -r requirements.txt
 ```
-# or
+### or
 ```
 pip install scapy>=2.5.0 rich>=13.0.0 click>=8.1.0 netifaces>=0.11.0 pyyaml>=6.0
 ```
 
-# Para análisis y visualización (opcional)
+## Para análisis y visualización (opcional)
 ```
 pip install pandas matplotlib numpy
 ```
 
-# 🍎 macOS
+## 🍎 macOS
 ```
 brew install libpcap
 pip install -e .
 ```
 
-# 🪟 Windows
+## 🪟 Windows
 - 1. Instalar Npcap (NO WinPcap) en modo "WinPcap API-compatible Mode"
 - 2. Instalar Python 3.8+
 - 3. `pip install -e .`
@@ -124,7 +124,7 @@ pip install -e .
 ---
 
 # 🔧 Configuración de Permisos (Linux)
-# Usar sudo (recomendado para pruebas)
+## Usar sudo (recomendado para pruebas)
 ```
 sudo python run.py monitor
 ```
@@ -133,37 +133,37 @@ sudo python run.py monitor
 # ⚡ Uso Rápido
 ## Verificar instalación
 
-# Mostrar interfaces disponibles
+## Mostrar interfaces disponibles
 ```
 dns-expert interfaces
 ```
-# or
+### or
 ```
 python run.py interfaces
 ```
 
-# Modo prueba (sin tráfico real)
+## Modo prueba (sin tráfico real)
 ```
 sudo python run.py test --duration 10
 ```
 
 # Primera captura
-# Análisis rápido de 30 segundos
+## Análisis rápido de 30 segundos
 ```
 sudo python run.py quick --duration 30
 ```
 
-# Monitoreo con detección de seguridad
+## Monitoreo con detección de seguridad
 ```
 sudo python run.py monitor --security
 ```
 
 # Generar reporte
-# Reporte en Markdown (legible)
+## Reporte en Markdown (legible)
 ```
 python run.py report captura.json --output informe.md
 ```
-# Reporte en JSON (procesable)
+## Reporte en JSON (procesable)
 ```
 dns-expert report captura.json --format json --output informe.json
 or
@@ -172,14 +172,14 @@ python run.py report captura.json --format json --output informe.json
 ---
 
 # 📚 Comandos Detallados
-# 🎯 Monitoreo y Captura
+## 🎯 Monitoreo y Captura
 | Comando	| Descripción	| Ejemplo |
 |---------|-------------|---------|
 | monitor |	Captura continua hasta Ctrl+C |	`sudo python run.py monitor --security` |
 | quick	| Captura por tiempo definido |	`sudo python run.py quick --duration 60` |
 | test | Simula tráfico sin red |	`sudo python run.py test --duration 20` |
 
-# Opciones disponibles:
+## Opciones disponibles:
 
 | Opción | Descripción | Por Defecto |
 |--------|-------------|-------------|
@@ -190,7 +190,7 @@ python run.py report captura.json --format json --output informe.json
 | `-c, --config` | Archivo de configuración |	None |
 | `-v, --verbose` | Mostrar actividad en tiempo real | False |
 
-# Ejemplos completos
+## Ejemplos completos
 ```
 sudo python run.py monitor --security --verbose --output captura.json -i eth0
 sudo python run.py quick --duration 120 --security --output analisis.json
@@ -199,23 +199,23 @@ sudo python run.py monitor --config config/detectors.yaml
 
 ### ⚡ Comando Quick (Análisis Rápido)
 
-# Uso básico
+## Uso básico
 ```
 sudo python run.py quick --duration 30
 ```
-# Con detección de seguridad
+## Con detección de seguridad
 ```
 sudo python run.py quick --duration 120 --security
 ```
-# Guardar captura
+## Guardar captura
 ```
 sudo python run.py quick --duration 60 --security --output analisis.json
 ```
-# Modo detallado
+## Modo detallado
 ```
 sudo python run.py quick --duration 30 --security --verbose
 ```
-# Especificar interfaz
+## Especificar interfaz
 ```
 sudo python run.py quick -i eth0 --duration 30 --security
 ```
@@ -232,7 +232,7 @@ sudo python run.py quick -i eth0 --duration 30 --security
 
 `-f, --format` - `md` (default) o `json`
 
-# Formatos de reporte
+## Formatos de reporte
 ```
 dns-expert report captura.json --output informe.md     # Markdown
 or
@@ -243,7 +243,7 @@ or
 python run.py report captura.json --format json        # JSON
 ```
 
-# 🔧 Utilidades
+## 🔧 Utilidades
 
 | Comando |	Descripción |	Ejemplo |
 |---------|-------------|---------|
@@ -329,29 +329,29 @@ Generated: 2026-02-11 16:19:05
 <div align="center"> <table> <tr> <td>📊 Estadísticas en tiempo real</td> <td>🏆 Top dominios consultados</td> </tr> <tr> <td>🛡️ Alertas de seguridad destacadas</td> <td>📋 Actividad reciente</td> </tr> <tr> <td colspan="2">📈 Gráficos de tráfico y distribución</td> </tr> </table> </div>
 
 # 💻 Ejemplos de Exportación
-# Dashboard interactivo
+## Dashboard interactivo
 ```
 dns-expert export captura.json --format html
 ```
-# Genera: captura.html
+## Genera: captura.html
 
-# Análisis forense con Wireshark
+## Análisis forense con Wireshark
 ```
 dns-expert export captura.json --format pcap
 ```
-# Genera: captura.pcap
+## Genera: captura.pcap
 
-# Análisis estadístico en Excel
+## Análisis estadístico en Excel
 ```
 dns-expert export captura.json --format csv
 ```
-# Genera: captura.csv
+## Genera: captura.csv
 
-# Exportación completa (todos los formatos)
+## Exportación completa (todos los formatos)
 ```
 dns-expert export captura.json --format all
 ```
-# Genera: captura.json, .csv, .html, .yaml, .pcap
+## Genera: captura.json, .csv, .html, .yaml, .pcap
 
 ---
 
@@ -449,23 +449,23 @@ Detectores activos:
 # 🔧 Utilidades y Mantenimiento
 ## 🛠️ Reparación de Archivos JSON
 Los archivos de captura pueden dañarse si se interrumpe la escritura. DNS Expert Monitor incluye herramientas avanzadas de reparación:
-# 1. Diagnosticar problemas
+## 1. Diagnosticar problemas
 ```
 dns-expert fix-json --diagnostic captura.json
 ```
-# 2. Reparar automáticamente (recomendado)
+## 2. Reparar automáticamente (recomendado)
 ```
 dns-fix --diagnostic captura.json       # Diagnosticar problemas
 ```
-# 3. Forzar reparación con métodos agresivos
+## 3. Forzar reparación con métodos agresivos
 ```
 dns-fix --force captura.json             # Forzar reparación
 ```
-# 4. Reparar sin backup
+## 4. Reparar sin backup
 ```
 dns-fix --no-backup captura.json         # Reparar sin backup
 ```
-# 5. Guardar archivo
+## 5. Guardar archivo
 ```
 dns-fix captura.json --output nuevo.json # Guardar en otro archivo
 ```
@@ -478,15 +478,15 @@ dns-fix captura.json --output nuevo.json # Guardar en otro archivo
 ✅ Backup automático - Siempre crea .bak antes de modificar
 
 # 🧹 Mantenimiento
-# Verificar integridad del JSON
+## Verificar integridad del JSON
 ```
 python3 -c "import json; json.load(open('captura.json'))" && echo "✅ Válido"
 ```
-# Limpiar backups antiguos
+## Limpiar backups antiguos
 ```
 rm captura.json.bak.* 2>/dev/null
 ```
-# Comprimir capturas antiguas
+## Comprimir capturas antiguas
 ```
 gzip captura_*.json
 ```
@@ -495,19 +495,19 @@ gzip captura_*.json
 # 🔄 Flujos de Trabajo Recomendados
 
 1. 🚨 Investigación de Incidentes
-# Captura enfocada (60 segundos)
+## Captura enfocada (60 segundos)
 ```
 sudo python run.py quick --duration 60 --output incident.json
 ```
-# Análisis inmediato
+## Análisis inmediato
 ```
 dns-expert report incident.json --output incident_report.md
 ```
-## or
+### or
 ```
 python run.py report incident.json --output incident_report.md
 ```
-# Exportar evidencias para forense
+## Exportar evidencias para forense
 ```
 dns-expert export incident.json --format pcap
 dns-expert export incident.json --format html
@@ -570,17 +570,17 @@ dns-expert export trend_*.json --format all
 ```
 
 5. ⚡ Comandos Combinados
-# Capturar + Reporte (una línea)
+## Capturar + Reporte (una línea)
 ```
 sudo python run.py monitor --security --output temp.json \
   && python run.py report temp.json --output reporte.md
 ```
-# Captura rápida + Exportación completa
+## Captura rápida + Exportación completa
 ```
 sudo python run.py quick --duration 60 --output quick.json \
   && python run.py export quick.json --format all
 ```
-# Análisis completo con todos los formatos
+## Análisis completo con todos los formatos
 ```
 sudo python run.py monitor --security --output analysis.json \
   && python run.py export analysis.json --format all \
@@ -661,16 +661,17 @@ dns_expert_monitor/
 - 🔧 Plugins - Nuevos detectores de seguridad
 
 ## 🙏 Reconocimientos
-### 📚 Librerías
-- Scapy - Manipulación de paquetes
-- Rich - Terminal formateada
-- Click - Framework CLI
-- Netifaces - Detección multiplataforma
-- PyYAML - Configuración estructurada
-- Pandas - Análisis de datos (opcional)
-- Matplotlib - Visualización (opcional)
 
-## 👥 Comunidad
+### 📚 Librerías
+- **[Scapy](https://scapy.net/)** - Manipulación de paquetes
+- **[Rich](https://rich.readthedocs.io/)** - Terminal formateada
+- **[Click](https://click.palletsprojects.com/)** - Framework CLI profesional
+- **[Netifaces](https://github.com/al45tair/netifaces)** - Detección multiplataforma
+- **[PyYAML](https://pyyaml.org/)** - Configuración estructurada
+- **[Pandas](https://pandas.pydata.org/)** - Análisis de datos (opcional)
+- **[Matplotlib](https://matplotlib.org/)** - Visualización (opcional)
+
+### 👥 Comunidad
 - A todos los contribuidores que han ayudado a mejorar esta herramienta
 - A la comunidad de seguridad que comparte conocimiento sobre amenazas DNS
 - A los usuarios que reportan bugs y sugieren mejoras
