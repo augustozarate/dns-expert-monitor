@@ -24,9 +24,7 @@
 - [Recommended Workflows](#-recommended-workflows)
 - [Troubleshooting](#-troubleshooting)
 - [Architecture](#-architecture)
-- [Upcoming Features](#-upcoming-features)
 - [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
@@ -378,7 +376,7 @@ dns-expert export capture.json --format all
 ```
 ## Generates: capture.json, .csv, .html, .yaml, .pcap
 ---
-### 🛡️ Security Detectors
+# 🛡️ Security Detectors
 1. 🚨 DNS Tunneling Detector
 - **Detection**: Data exfiltration via DNS
 - Indicators: High entropy, Base64/Hex patterns, long subdomains, suspicious record types
@@ -495,10 +493,10 @@ dns-fix capture.json --output repaired.json
 ```
 
 ## Repair strategies:
-✅ Trailing comma removal - Removes commas before `]` or `}`
-✅ Object extraction - Recovers individual JSON objects
-✅ Robust parser - Multiple recovery methods
-✅ Automatic backup - Always creates .bak before modifying
+- ✅ Trailing comma removal - Removes commas before `]` or `}`
+- ✅ Object extraction - Recovers individual JSON objects
+- ✅ Robust parser - Multiple recovery methods
+- ✅ Automatic backup - Always creates .bak before modifying
 
 ---
 
@@ -618,7 +616,7 @@ sudo python run.py monitor --security --output analysis.json \
   && python run.py report analysis.json --output security_report.md
 ```
 
-❓ Troubleshooting Common Issues
+# ❓ Troubleshooting Common Issues
 
 | Error | Cause | Solution |
 |-------|-------|----------|
@@ -631,7 +629,7 @@ sudo python run.py monitor --security --output analysis.json \
 
 ---
 
-🏗️ Architecture
+# 🏗️ Architecture
 ```
 dns_expert_monitor/
 ├── src/

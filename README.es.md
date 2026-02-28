@@ -21,9 +21,7 @@
 - [Flujos de Trabajo](#-flujos-de-trabajo-recomendados)
 - [Solución de Problemas](#-solución-de-problemas-comunes)
 - [Arquitectura](#-arquitectura)
-- [Próximas Características](#-próximas-características)
 - [Contribuir](#-contribuir)
-- [Licencia](#-licencia)
 
 ---
 
@@ -355,7 +353,7 @@ dns-expert export captura.json --format all
 
 ---
 
-### 🛡️ Detectores de Seguridad
+# 🛡️ Detectores de Seguridad
 1. 🚨 DNS Tunneling Detector
 - **DNS Tunneling**: Detección de exfiltración de datos
 - Alta entropía en nombres de dominio
@@ -472,10 +470,10 @@ dns-fix captura.json --output nuevo.json # Guardar en otro archivo
 
 ### Estrategias de reparación:
 
-✅ Corrección de comas finales - Elimina comas antes de `]` o `}`
-✅ Extracción de objetos - Recupera objetos JSON individuales
-✅ Parser robusto - Múltiples métodos de recuperación
-✅ Backup automático - Siempre crea .bak antes de modificar
+- ✅ Corrección de comas finales - Elimina comas antes de `]` o `}`
+- ✅ Extracción de objetos - Recupera objetos JSON individuales
+- ✅ Parser robusto - Múltiples métodos de recuperación
+- ✅ Backup automático - Siempre crea .bak antes de modificar
 
 # 🧹 Mantenimiento
 ## Verificar integridad del JSON
@@ -600,7 +598,7 @@ sudo python run.py monitor --security --output analysis.json \
 
 ---
 
-🏗️ Arquitectura
+# 🏗️ Arquitectura
 ```
 dns_expert_monitor/
 ├── src/
