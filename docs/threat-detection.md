@@ -113,8 +113,8 @@ detectors:
 
 | Threat | Parameter | Normal | Range |	Suspicious | Critical |
 |--------|-----------|--------|-------|------------|----------|
-| Tunneling |	Domain | Entropy | < 3.5 | 3.5 - 4.5 |	> 4.5 |
-| Tunneling |	Subdomain | Length | < 30 |	30 - 50 |	> 50 |
+| Tunneling |	Domain Entropy | < 3.5 | 3.5 - 4.5 |	> 4.5 |
+| Tunneling |	Subdomain Length | < 30 |	30 - 50 |	> 50 |
 | Poisoning |	TTL (seconds) |	> 300 |	30 - 300 |	< 30 |
 | Amplification |	Query Rate (QPS) |	< 20 | 20 - 100 |	> 100 |
 | Amplification |	Response Ratio | < 3x |	3x - 10x | > 10x |
