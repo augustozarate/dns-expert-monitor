@@ -19,11 +19,11 @@
 - [Detailed Commands](#-detailed-commands)
 - [Professional Reporting](#-professional-reporting-system)
 - [Multi-format Export](#-multi-format-export)
-- [Security Detectors](#-security-detectors)
+- [Security Detectors](#security-detectors)
 - [Utilities & Maintenance](#-utilities--maintenance)
 - [Recommended Workflows](#-recommended-workflows)
 - [Troubleshooting](#-troubleshooting)
-- [Architecture](#-architecture)
+- [Architecture](#architecture)
 - [Contributing](#-contributing)
 
 ---
@@ -376,9 +376,9 @@ dns-expert export capture.json --format all
 ```
 ## Generates: capture.json, .csv, .html, .yaml, .pcap
 ---
-# 🛡️ Security Detectors
+# Security Detectors
 1. 🚨 DNS Tunneling Detector
-- **Detection**: Data exfiltration via DNS
+- **Detection 🛡️**: Data exfiltration via DNS
 - Indicators: High entropy, Base64/Hex patterns, long subdomains, suspicious record types
 
 | Parameter | Threshold | Description |
@@ -395,7 +395,7 @@ Example detection:
 
 2. ⚠️ DNS Poisoning Detector
 
-- **Detection**: Cache poisoning protection
+- **Detection 🛡️**: Cache poisoning protection
 - Indicators: Low TTL, multiple different responses, unauthorized servers
 
 | Parameter | Threshold | Description |
@@ -411,7 +411,7 @@ Example detection:
 
 3. 🟠 Amplification Detector
 
-- **Detection**: DDoS amplification attacks
+- **Detection 🛡️**: DDoS amplification attacks
 - Indicators: High response/query ratio, anomalous query rates, excessive ANY queries
 
 | Parameter | Threshold | Description |
@@ -427,7 +427,7 @@ Example detection:
 
 4. 🔵 NXDOMAIN Attack Detector
 
-- **Detection**: Non-existent domain flooding
+- **Detection 🛡️**: Non-existent domain flooding
 
 - Indicators: High NXDOMAIN percentage, elevated rates, random subdomains
 
@@ -629,7 +629,8 @@ sudo python run.py monitor --security --output analysis.json \
 
 ---
 
-# 🏗️ Architecture
+# Architecture
+🏗️
 ```
 dns_expert_monitor/
 ├── src/

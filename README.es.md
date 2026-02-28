@@ -16,11 +16,11 @@
 - [Comandos Detallados](#-comandos-detallados)
 - [Sistema de Reportes](#-sistema-de-reportes-profesionales)
 - [Exportación Multiformato](#-exportación-multiformato)
-- [Detectores de Seguridad](#-detectores-de-seguridad)
+- [Detectores de Seguridad](#detectores-de-seguridad)
 - [Utilidades y Mantenimiento](#-utilidades-y-mantenimiento)
 - [Flujos de Trabajo](#-flujos-de-trabajo-recomendados)
 - [Solución de Problemas](#-solución-de-problemas-comunes)
-- [Arquitectura](#-arquitectura)
+- [Arquitectura](#arquitectura)
 - [Contribuir](#-contribuir)
 
 ---
@@ -321,12 +321,12 @@ Generated: 2026-02-11 16:19:05
 | PCAP | .pcap | Wireshark, análisis forense | --format pcap	| ✅ |
 | ALL | - |	Todos los formatos simultáneamente | --format all	| ✅ |
 
-# 📊 Dashboard HTML
+## 📊 Dashboard HTML
 ## El reporte HTML incluye:
 
 <div align="center"> <table> <tr> <td>📊 Estadísticas en tiempo real</td> <td>🏆 Top dominios consultados</td> </tr> <tr> <td>🛡️ Alertas de seguridad destacadas</td> <td>📋 Actividad reciente</td> </tr> <tr> <td colspan="2">📈 Gráficos de tráfico y distribución</td> </tr> </table> </div>
 
-# 💻 Ejemplos de Exportación
+## 💻 Ejemplos de Exportación
 ## Dashboard interactivo
 ```
 dns-expert export captura.json --format html
@@ -353,9 +353,10 @@ dns-expert export captura.json --format all
 
 ---
 
-# 🛡️ Detectores de Seguridad
-1. 🚨 DNS Tunneling Detector
-- **DNS Tunneling**: Detección de exfiltración de datos
+# Detectores de Seguridad
+
+1. 🚨 DNS Tunneling Detector 
+- **DNS Tunneling 🛡️**: Detección de exfiltración de datos
 - Alta entropía en nombres de dominio
 - Patrones Base64/Hexadecimal
 - Subdominios anormalmente largos
@@ -374,7 +375,7 @@ Ejemplo detección:
 ```
 
 2. ⚠️ DNS Poisoning Detector
-- **DNS Poisoning**: Protección contra envenenamiento de cache
+- **DNS Poisoning 🛡️**: Protección contra envenenamiento de cache
 - TTL anormalmente bajos (<30s)
 - Múltiples respuestas diferentes para la misma consulta
 - Servidores DNS no autorizados
@@ -391,7 +392,7 @@ Ejemplo detección:
 ```
 
 3. 🟠 Amplification Detector
-- **Amplificación DDoS**: Detección de ataques de amplificación
+- **Amplificación DDoS 🛡️**: Detección de ataques de amplificación
 - Altos ratios respuesta/consulta (>10x)
 - Tasas de consulta anómalas (>100 QPS)
 - Consultas excesivas de tipo ANY
@@ -408,7 +409,7 @@ Ejemplo detección:
 ```
 
 4. 🔵 NXDOMAIN Attack Detector
-- **Ataques NXDOMAIN**: Detección de inundación
+- **Ataques NXDOMAIN 🛡️**: Detección de inundación
 - Alto porcentaje de respuestas NXDOMAIN (>30%)
 - Tasas elevadas de NXDOMAIN por minuto
 - Subdominios aleatorios generados automáticamente
@@ -598,7 +599,8 @@ sudo python run.py monitor --security --output analysis.json \
 
 ---
 
-# 🏗️ Arquitectura
+# Arquitectura
+🏗️
 ```
 dns_expert_monitor/
 ├── src/
