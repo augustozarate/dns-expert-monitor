@@ -1,108 +1,129 @@
-# Guía de Detección de Amenazas DNS
+# DNS Threat Detection Guide
 
-## ¿Qué detecta DNS Expert Monitor?
+## What DNS Expert Monitor Detects
 
 ### 1. DNS Tunneling
-**Descripción**: Técnica para evadir firewalls encapsulando datos en consultas DNS.
+**Description**: Technique to bypass firewalls by encapsulating data within DNS queries.
 
-**Indicadores**:
-- Dominios con alta entropía (>4.5)
-- Subdominios excesivamente largos (>50 caracteres)
-- Patrones Base64/Hexadecimal en nombres
-- Tipos de registro inusuales (TXT, NULL, KEY)
+**Indicators**:
+- High entropy domains (>4.5)
+- Excessively long subdomains (>50 characters)
+- Base64/Hexadecimal patterns in domain names
+- Unusual record types (TXT, NULL, KEY)
 
-**Ejemplo detectado**:
-🚨 ALERTA: Alta entropía (4.62) en dominio: 23pzgde427i3ln7qmkdr986h4snnkt.example.com
+**Detection Example**:
+🚨 ALERT: High entropy (4.62) in domain: 23pzgde427i3ln7qmkdr986h4snnkt.example.com
 
-### 2. DNS Poisoning/Cache Poisoning
-**Descripción**: Inyección de registros DNS falsos en la cache.
+### 2. DNS Poisoning / Cache Poisoning
+**Description**: Injection of fake DNS records into cache.
 
-**Indicadores**:
-- TTL anormalmente bajos (<30 segundos)
-- Múltiples respuestas diferentes para la misma consulta
-- Respuestas de servidores no autorizados
+**Indicators**:
+- Abnormally low TTL (<30 seconds)
+- Multiple different responses for the same query
+- Responses from unauthorized servers
 
-**Ejemplo detectado**:
-⚠️ ADVERTENCIA: TTL anormalmente bajo (5s) para main.vscode-cdn.net
-
-### 3. Ataques de Amplificación DNS
-**Descripción**: Ataques DDoS que usan servidores DNS para amplificar tráfico.
-
-**Indicadores**:
-- Alto ratio respuesta/consulta (>10:1)
-- Tasas de consulta anómalas (>100 QPS)
-- Consultas excesivas de tipo ANY
-
-**Ejemplo detectado**:
-⚠️ ADVERTENCIA: Alta tasa de consultas (924.2 QPS) desde 192.168.111.128
+**Detection Example**:
+⚠️ WARNING: Abnormally low TTL (5s) for main.vscode-cdn.net
 
 
-### 4. Ataques NXDOMAIN
-**Descripción**: Inundación de respuestas NXDOMAIN para saturar servidores.
+### 3. DNS Amplification Attacks
+**Description**: DDoS attacks using DNS servers to amplify traffic.
 
-**Indicadores**:
-- Alto porcentaje de respuestas NXDOMAIN (>30%)
-- Tasa elevada de NXDOMAIN por minuto (>100)
-- Subdominios aleatorios generados automáticamente
+**Indicators**:
+- High response/query ratio (>10:1)
+- Anomalous query rates (>100 QPS)
+- Excessive ANY type queries
 
-## Configuración Recomendada
+**Detection Example**:
+⚠️ WARNING: High query rate (924.2 QPS) from 192.168.111.128
 
-### Para redes corporativas:
+### 4. NXDOMAIN Attacks
+**Description**: Flooding with NXDOMAIN responses to overwhelm servers.
+
+**Indicators**:
+- High percentage of NXDOMAIN responses (>30%)
+- Elevated NXDOMAIN rate per minute (>100)
+- Randomly generated subdomains
+
+---
+
+## Recommended Configuration
+
+### For Corporate Networks:
 ```
 detectors:
   dns_tunneling:
-    entropy_threshold: 4.3      # Más sensible
-    max_subdomain_length: 40    # Más restrictivo
+    entropy_threshold: 4.3      # More sensitive
+    max_subdomain_length: 40    # More restrictive
   
   poisoning_detector:
-    min_ttl_for_alert: 60       # TTL mínimo aceptable
+    min_ttl_for_alert: 60       # Minimum acceptable TTL
   
   amplification_detector:
-    max_queries_per_second: 50  # Límite más bajo
+    max_queries_per_second: 50  # Lower threshold
   
   nxdomain_attack:
-    nxdomain_percentage_threshold: 20  # Más sensible
+    nxdomain_percentage_threshold: 20  # More sensitive
 ```
-### Para ISPs/Carriers:
+### For ISPs/Carriers:
 ```
 detectors:
   amplification_detector:
-    min_amplification_ratio: 5   # Más sensible a amplificación
-    max_queries_per_second: 1000 # Límite más alto
+    min_amplification_ratio: 5   # More sensitive to amplification
+    max_queries_per_second: 1000 # Higher tolerance
   
   nxdomain_attack:
-    nxdomain_per_minute_threshold: 500 # ISP escala mayor
+    nxdomain_per_minute_threshold: 500 # Carrier-scale
 ```
 
-## Mitigación Recomendada
-Para DNS Tunneling:
-- Implementar DNS filtering con listas de dominios permitidos
-- Limitar longitud máxima de nombres de dominio
-- Monitorear tipos de registro inusuales
+## Recommended Mitigation
+## For DNS Tunneling:
+- Implement DNS filtering with allowlists
+- Limit maximum domain name length
+- Monitor unusual record types
 
-## Para DNS Poisoning:
-- Usar DNSSEC para validación criptográfica
-- Configurar TTL mínimos apropiados
-- Limitar servidores DNS autorizados
+## For DNS Poisoning:
+- Use DNSSEC for cryptographic validation
+- Configure appropriate minimum TTLs
+- Restrict authorized DNS servers
 
-## Para Amplificación DDoS:
-- Rate limiting en servidores DNS recursivos
-- Deshabilitar o limitar consultas de tipo ANY
-- Implementar Response Rate Limiting (RRL)
+## For DNS Amplification DDoS:
+- Rate limiting on recursive DNS servers
+- Disable or restrict ANY type queries
+- Implement Response Rate Limiting (RRL)
 
-# Casos de Estudio
+# Case Studies
 
-## Caso 1: Exfiltración de Datos
-- Escenario: Empleado exfiltra datos corporativos vía DNS tunneling.
-- Detección: Alertas de alta entropía y patrones Base64.
-- Acción: Investigar IP origen y bloquear dominios sospechosos.
+## Case 1: Data Exfiltration
+- Scenario: Employee exfiltrates corporate data via DNS tunneling.
+- Detection: High entropy and Base64 pattern alerts.
+- Action: Investigate source IP, block suspicious domains.
 
-## Caso 2: Ataque DDoS a Infraestructura
-- Escenario: Ataque de amplificación contra servidores web.
-- Detección: Alertas de alto ratio y tasa de consultas.
-- Acción: Implementar rate limiting y contactar ISP.
+## Case 2: DDoS Attack on Infrastructure
+- Scenario: Amplification attack against web servers.
+- Detection: High ratio and query rate alerts.
+- Action: Implement rate limiting, contact ISP.
 
-## Caso 3: Envenenamiento de Cache
-- Escenario: Atacante redirige tráfico a servidores maliciosos.
-- Detección: Alertas de TTL bajo y múltiples respuestas.
-- Acción: Validar DNSSEC y purgar cache DNS.
+## Case 3: Cache Poisoning
+- Scenario: Attacker redirects traffic to malicious servers.
+- Detection: Low TTL and multiple response alerts.
+- Action: Validate DNSSEC, purge DNS cache.
+
+# Threshold Reference Table
+
+| Threat | Parameter | Normal | Range |	Suspicious | Critical |
+|--------|-----------|--------|-------|------------|----------|
+| Tunneling |	Domain | Entropy | < 3.5 | 3.5 - 4.5 |	> 4.5 |
+| Tunneling |	Subdomain | Length | < 30 |	30 - 50 |	> 50 |
+| Poisoning |	TTL (seconds) |	> 300 |	30 - 300 |	< 30 |
+| Amplification |	Query Rate (QPS) |	< 20 | 20 - 100 |	> 100 |
+| Amplification |	Response Ratio | < 3x |	3x - 10x | > 10x |
+| NXDOMAIN | Error Rate |	< 5% | 5% - 30% |	> 30% |
+
+# Additional Resources
+
+- DNSSEC: https://www.cloudflare.com/dns/dnssec/
+- Response Rate Limiting: RFC 8020
+- DNS Tunneling Detection: IETF Draft
+
+This guide is part of DNS Expert Monitor documentation. For more information, visit the main repository.
