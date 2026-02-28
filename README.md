@@ -22,7 +22,7 @@
 - [Security Detectors](#security-detectors)
 - [Utilities & Maintenance](#-utilities--maintenance)
 - [Recommended Workflows](#-recommended-workflows)
-- [Troubleshooting](#-troubleshooting)
+- [Troubleshooting](#troubleshooting)
 - [Architecture](#architecture)
 - [Contributing](#-contributing)
 
@@ -616,7 +616,7 @@ sudo python run.py monitor --security --output analysis.json \
   && python run.py report analysis.json --output security_report.md
 ```
 
-# ❓ Troubleshooting Common Issues
+# Troubleshooting
 
 | Error | Cause | Solution |
 |-------|-------|----------|
